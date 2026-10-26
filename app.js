@@ -247,7 +247,7 @@ function render(r) {
     <div class="r-hero fade">
       <img class="r-photo" src="${imgDataURL}" alt="">
       <div class="r-hero-label">✨ 美学评分</div>
-      <div class="r-score">${n(r.total)}<small>/ 100</small></div>
+      <div class="r-score">${n(r.total / 10)}<small>/ 10</small></div>
       <div class="r-quote">${r.band.quote}</div>
       <div class="r-band">${r.band.label}</div>
       <p class="r-hero-desc">${r.band.desc}</p>
@@ -295,7 +295,7 @@ function render(r) {
       <div class="sec-sub-inline">您的面部特征在不同地区审美标准中的表现</div>
       ${aesthetic.map(a => `
         <div class="card region-card">
-          <div class="rg-top"><div class="rg-name">${a.name}</div><div class="rg-score">${a.score} <small>/ 100</small></div></div>
+          <div class="rg-top"><div class="rg-name">${a.name}</div><div class="rg-score">${(a.score / 10).toFixed(1)} <small>/ 10</small></div></div>
           <p class="rg-desc">${a.desc}</p>
           <div class="kv-line"><span class="kl">优势特征</span>${chipRow(a.adv, 'fill')}</div>
           <div class="kv-line"><span class="kl">符合特点</span>${chipRow(a.feat)}</div>
@@ -367,7 +367,7 @@ function render(r) {
     </div>
 
     <div class="r-foot">
-      <p class="foot-share">你的结果是「${t.name}」· ${n(r.total)} 分<br>截图发给朋友，看看她是不是也被说中了</p>
+      <p class="foot-share">你的结果是「${t.name}」· ${n(r.total / 10)} 分<br>截图发给朋友，看看她是不是也被说中了</p>
       <button class="btn-again" id="btn-again">测另一张照片</button>
       <p class="disclaimer">本报告基于 AI 面部特征识别生成，属于娱乐性参考，不作为任何专业美学或医学结论。照片仅在你的浏览器本地处理，不会上传到服务器。</p>
     </div>

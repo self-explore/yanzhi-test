@@ -118,12 +118,18 @@ body { overflow: hidden; }
 .btn-main:active { transform: scale(.97); box-shadow: 0 6px 16px rgba(255, 107, 139, .28); }
 .btn-main:disabled { opacity: .45; box-shadow: none; }
 
-.cover-note {
+.cover-privacy {
   margin-top: 20px;
   font-size: 11.5px;
+  line-height: 1.9;
   color: var(--ink3);
   letter-spacing: .3px;
+  background: rgba(255, 255, 255, .55);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 16px;
 }
+.cover-privacy strong { color: #4a9e68; font-size: 12px; }
 
 .cover-deco {
   position: absolute;
@@ -573,6 +579,167 @@ body { overflow: hidden; }
 /* 入场动画 */
 .fade { opacity: 0; transform: translateY(16px); animation: fadeUp .55s ease forwards; }
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ==================== v2 新板块 ==================== */
+.r-quote {
+  position: relative;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  opacity: .96;
+}
+
+.sec-sub-inline {
+  font-size: 12px;
+  color: var(--ink3);
+  margin: -8px 2px 12px;
+}
+
+/* chips */
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-row.center { justify-content: center; margin-bottom: 14px; }
+.chip {
+  font-size: 12px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .85);
+  border: 1px solid var(--line);
+  color: var(--ink2);
+  white-space: nowrap;
+}
+.chip.pink { background: rgba(255, 143, 171, .14); border-color: rgba(255, 143, 171, .4); color: #e2557c; }
+.chip.primary { background: linear-gradient(135deg, #ff6b8b, #d977a3); border: none; color: #fff; font-weight: 700; padding: 7px 16px; }
+.chip.soft { background: rgba(255, 179, 198, .22); border-color: rgba(255, 143, 171, .38); color: #c95878; }
+.chip.fill { background: linear-gradient(135deg, #b58ae6, #9d6fe0); border: none; color: #fff; }
+
+/* 键值行（label + 内容） */
+.kv-line { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; margin-top: 14px; }
+.kv-line.col { flex-direction: column; gap: 6px; }
+.kv-line .kl {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+  padding-top: 5px;
+}
+.kv-line .chip-row { flex: 1; }
+.kv-line .mg-item { margin-bottom: 2px; }
+
+/* 明星匹配卡 */
+.star-card2 { margin-bottom: 14px; padding: 18px; }
+.star-card2:last-child { margin-bottom: 0; }
+.sc-top { display: flex; align-items: center; gap: 13px; margin-bottom: 10px; }
+.sc-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe3ec, #ffc9d8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; font-weight: 800; color: #d977a3;
+  flex-shrink: 0;
+}
+.sc-main { flex: 1; }
+.sc-name { font-size: 16.5px; font-weight: 800; }
+.sc-sim { font-size: 13px; color: var(--ink2); margin-top: 3px; }
+.sc-sim strong { color: #b46ee0; font-size: 16px; font-weight: 800; margin-left: 2px; }
+.sc-desc { font-size: 13px; line-height: 1.9; color: var(--ink2); margin-bottom: 4px; }
+
+/* 国际审美卡 */
+.region-card { margin-bottom: 14px; padding: 19px; }
+.region-card:last-child { margin-bottom: 0; }
+.rg-top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.rg-name { font-size: 16px; font-weight: 800; }
+.rg-score { font-size: 24px; font-weight: 800; color: #b46ee0; font-variant-numeric: tabular-nums; }
+.rg-score small { font-size: 12px; color: var(--ink3); font-weight: 500; }
+.rg-desc { font-size: 12.5px; line-height: 1.85; color: var(--ink2); margin-bottom: 2px; }
+
+/* 五官部位详解 */
+.part-block {
+  padding: 17px 0 15px;
+  border-bottom: 1px dashed var(--line);
+}
+.part-block:first-child { padding-top: 2px; }
+.part-block:last-child { border-bottom: none; padding-bottom: 4px; }
+.pb-head { display: flex; align-items: center; gap: 9px; margin-bottom: 11px; }
+.pb-head i { font-style: normal; font-size: 19px; }
+.pb-name { font-size: 15.5px; font-weight: 800; }
+.pb-desc { font-size: 13px; line-height: 1.95; color: var(--ink2); margin: 11px 0 12px; }
+.pb-sec { padding-left: 12px; border-left: 3px solid var(--pink-l); margin-bottom: 11px; }
+.pb-sec:last-child { margin-bottom: 0; }
+.pb-sec.beauty { border-left-color: #b58ae6; }
+.pb-label { font-size: 12px; font-weight: 700; color: #e2557c; margin-bottom: 5px; }
+.pb-sec.beauty .pb-label { color: #9d6fe0; }
+.pb-li { font-size: 12.8px; line-height: 2; color: var(--ink2); }
+
+/* 皮相 / 骨相 网格 */
+.kv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.kv { background: #faf4f6; border-radius: 13px; padding: 12px 14px; }
+.kv-label { font-size: 11px; color: var(--ink3); margin-bottom: 5px; }
+.kv-value { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+
+.sec3-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 16px 0 8px;
+  padding-left: 9px;
+  border-left: 3px solid var(--pink-l);
+}
+.sec3-label.good { color: #4a9e68; border-left-color: #5cb87a; }
+.sec3-label.warn { color: #d07840; border-left-color: #e0a15c; }
+.check-li { font-size: 13px; line-height: 2.1; color: #3f7a54; padding-left: 4px; }
+.warn-li { font-size: 13px; line-height: 2.1; color: #a5643a; padding-left: 4px; }
+
+.ratio-box {
+  background: rgba(181, 138, 230, .09);
+  border-radius: 13px;
+  padding: 13px 15px;
+  font-size: 12.8px;
+  line-height: 2;
+  color: var(--ink2);
+}
+.ratio-box strong { color: var(--ink); font-weight: 700; }
+
+/* 化妆建议分段 */
+.mk-sec { margin-bottom: 20px; }
+.mk-sec:last-child { margin-bottom: 0; }
+.mk-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.mk-title::before { content: '●'; color: #b46ee0; font-size: 9px; }
+.mk-sub { font-size: 11px; color: var(--ink3); margin-bottom: 12px; letter-spacing: 1px; }
+.mk-group { margin-bottom: 12px; }
+.mk-glabel { font-size: 12px; font-weight: 700; color: #b46ee0; margin-bottom: 4px; }
+
+/* 发型建议 */
+.hair-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: #faf4f6;
+  border-radius: 13px;
+  padding: 13px 15px;
+  margin-bottom: 9px;
+}
+.hair-item:last-child { margin-bottom: 0; }
+.hair-idx {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b58ae6, #9d6fe0);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
 
 @media (max-width: 360px) {
   .cover-title { font-size: 34px; }

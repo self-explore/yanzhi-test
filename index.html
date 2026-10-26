@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#fdf2f4">
+<title>颜值测试系统 · AI 面部分析</title>
+<link rel="stylesheet" href="style.css?v=20261026">
+</head>
+<body>
+
+<!-- ==================== 封面 ==================== -->
+<section class="page active" id="page-cover">
+  <div class="cover-inner">
+    <div class="cover-badge">AI 面部美学分析</div>
+    <h1 class="cover-title">你的脸，<br>藏着什么秘密</h1>
+    <p class="cover-sub">上传一张正脸照，从五官比例、骨相结构到整体气质，给你一份完整的面部分析报告。</p>
+
+    <div class="cover-feats">
+      <div class="cf"><span>👁</span>眼睛的独特魅力</div>
+      <div class="cf"><span>👃</span>鼻部的精致指数</div>
+      <div class="cf"><span>👄</span>唇形的迷人密码</div>
+      <div class="cf"><span>🎨</span>专属妆容建议</div>
+    </div>
+
+    <button class="btn-main" id="btn-start">开始颜值探索</button>
+    <p class="cover-note">照片仅在本机浏览器内处理，不会上传到任何服务器</p>
+  </div>
+  <div class="cover-deco"></div>
+</section>
+
+<!-- ==================== 上传 ==================== -->
+<section class="page" id="page-upload">
+  <div class="up-head">
+    <div class="up-step">第 1 步 / 共 2 步</div>
+    <h2 class="up-title">上传你的照片</h2>
+    <p class="up-sub">正脸、光线均匀、不戴墨镜的效果最好</p>
+  </div>
+
+  <div class="drop-zone" id="drop-zone">
+    <input type="file" id="file-input" accept="image/*" hidden>
+    <div class="dz-inner">
+      <div class="dz-icon">📷</div>
+      <div class="dz-text">点击上传照片</div>
+      <div class="dz-hint">支持 JPG / PNG，建议不超过 10MB</div>
+    </div>
+  </div>
+
+  <div class="preview-wrap" id="preview-wrap">
+    <div class="preview-frame">
+      <img id="preview-img" alt="预览">
+      <canvas id="scan-canvas"></canvas>
+    </div>
+    <div class="preview-actions">
+      <button class="btn-ghost" id="btn-reselect">重新选择</button>
+      <button class="btn-main" id="btn-analyze">开始分析</button>
+    </div>
+  </div>
+
+  <div class="tips-box">
+    <div class="tips-title">让结果更准确</div>
+    <div class="tips-item">· 正脸面对镜头，不要歪头</div>
+    <div class="tips-item">· 不要开强美白和美颜滤镜</div>
+    <div class="tips-item">· 光线均匀，避免单侧强阴影</div>
+  </div>
+</section>
+
+<!-- ==================== 分析中 ==================== -->
+<section class="page" id="page-loading">
+  <div class="loading-inner">
+    <div class="scan-box">
+      <img id="loading-img" alt="">
+      <div class="scan-line"></div>
+      <div class="scan-grid"></div>
+    </div>
+    <div class="load-title">正在分析你的面部特征</div>
+    <div class="load-bar"><i id="load-fill"></i></div>
+    <div class="load-step" id="load-step">正在读取面部轮廓…</div>
+  </div>
+</section>
+
+<!-- ==================== 结果 ==================== -->
+<section class="page" id="page-result">
+  <div class="result-scroll" id="result-scroll"></div>
+</section>
+
+<script src="data-face.js?v=20261026"></script>
+<script src="app.js?v=20261026"></script>
+</body>
+</html>

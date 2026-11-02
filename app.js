@@ -411,6 +411,7 @@ function bindUpload() {
     input.value = '';
     $('preview-wrap').classList.remove('show');
     dz.style.display = '';
+    document.querySelector('#page-upload .up-head').style.display = '';
   });
 
   $('btn-analyze').addEventListener('click', startAnalyze);
@@ -425,6 +426,7 @@ function handleFile(file) {
     imgDataURL = e.target.result;
     $('preview-img').src = imgDataURL;
     $('drop-zone').style.display = 'none';
+    document.querySelector('#page-upload .up-head').style.display = 'none';
     $('preview-wrap').classList.add('show');
   };
   reader.readAsDataURL(file);
@@ -476,6 +478,7 @@ function reset() {
   $('file-input').value = '';
   $('preview-wrap').classList.remove('show');
   $('drop-zone').style.display = '';
+  document.querySelector('#page-upload .up-head').style.display = '';
   $('load-fill').style.width = '0';
   $('load-step').textContent = LOAD_STEPS[0];
   show('page-upload');

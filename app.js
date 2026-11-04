@@ -10,6 +10,12 @@ let imgFile = null;
 let imgDataURL = '';
 let lastResult = null;
 
+// 隐藏演示参数：URL 带 ?demo=5.9 时锁定结果分数（仅供笔记素材截图用）
+const DEMO_SCORE = (() => {
+  const v = parseFloat(new URLSearchParams(location.search).get('demo'));
+  return !isNaN(v) && v >= 1 && v <= 9.6 ? Math.round(v * 10) / 10 : null;
+})();
+
 // ---------------- 页面切换 ----------------
 function show(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -71,14 +77,16 @@ function computeFace(seed) {
   if (rnd() < 0.04) total = 92.5 + rnd() * 3.5;
   total = Math.min(96.4, Math.max(78, total));
   total = Math.round(total * 10) / 10;
+  if (DEMO_SCORE !== null) total = DEMO_SCORE * 10;
 
   const band = SCORE_BANDS.find(b => total >= b.min) || SCORE_BANDS[SCORE_BANDS.length - 1];
 
   // 分项分数：围绕总分 ±0.9
-  const base = 6.6 + (total - 78) / 18 * 3.2;
+  const base = DEMO_SCORE !== null ? DEMO_SCORE - 0.2 : 6.6 + (total - 78) / 18 * 3.2;
+  const dimLo = DEMO_SCORE !== null ? 4.2 : 6.2;
   const dims = FACE_DIMS.map(d => {
     let sc = base + (rnd() - 0.5) * 1.8;
-    sc = Math.min(9.9, Math.max(6.2, sc));
+    sc = Math.min(9.9, Math.max(dimLo, sc));
     return { key: d.key, name: d.name, icon: d.icon, score: Math.round(sc * 10) / 10 };
   });
 
@@ -140,7 +148,7 @@ function buildStars(r, rnd) {
 function buildAesthetic(r, rnd) {
   return AESTHETIC_REGIONS.map(rg => {
     const { pick } = sampler(rnd);
-    const sc = Math.round(Math.min(97, Math.max(58, r.total + rg.scoreBase + (rnd() - 0.5) * 6)));
+    const sc = Math.round(Math.min(97, Math.max(DEMO_SCORE !== null ? 45 : 58, r.total + rg.scoreBase + (rnd() - 0.5) * 6)));
     return {
       name: rg.name, desc: rg.desc, score: sc,
       adv: pick(rg.adv, 2),
